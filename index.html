@@ -1,0 +1,84 @@
+<html>
+ 
+ 
+<head>
+ 
+    <title>Assignment 6 - Amicable Numbers</title>
+    <style>
+        h1 {
+            color:rgb(88, 140, 185);
+            font-family:'Courier New', Courier, monospace;
+        }
+        body {
+            background-image: url('math.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 20px;
+        }
+    </style>
+ 
+ 
+</head>
+ 
+ 
+<body>
+   
+    <h1>Amicable Numbers Calculator</h1>
+    <form>
+        <label for="fnum">First number:</label></br>
+        <input type="text" id="fnum"></br>
+        <label for="snum">Second number:</label></br>
+        <input type="text" id="snum"></br>
+        </br>
+        <input type ="button" value="Check if amicable"  name=“btn1” onclick="amicableNumbers(document.getElementById('fnum').value, document.getElementById('snum').value)">
+    </form>
+
+    <div id="amicability"></div>
+    <div id="factors"></div>
+
+    <script language="javascript">
+
+    function amicableNumbers(x, y) {
+        sumx = 0;
+        sumy = 0;
+        xfactors = [];
+        yfactors = [];
+        for (i = 0; i < x; i++) {
+            if (isAFactor(i, x)) {
+                sumx = newSum(sumx, i);
+                xfactors.push(i);
+            }
+        }
+        for (i = 0; i < y; i++) {
+            if (isAFactor(i, y)) {
+                sumy = newSum(sumy, i);
+                yfactors.push(i);
+            }
+        }
+        if (sumx == y && sumy == x) {
+            document.getElementById("amicability").innerHTML = "The numbers " + x + " and " + y + " are amicable";
+        } else {
+            document.getElementById("amicability").innerHTML = "The numbers " + x + " and " + y + " are not amicable";
+        }
+        document.getElementById("factors").innerHTML = "Factors of " + x + ": " + xfactors + " &nbsp; Factors of " + y + ": " + yfactors;
+    }
+
+    function isAFactor(z, w) {
+        if (w % z == 0)
+        return true;
+    }
+
+    function newSum(sum, x) {
+        sum += x;
+        return sum;
+    }
+   
+    </script>
+ 
+ 
+</body>
+ 
+ 
+</html>
